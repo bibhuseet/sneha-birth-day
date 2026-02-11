@@ -2,6 +2,7 @@ import HeroSection from "@/components/HeroSection";
 import GallerySection from "@/components/GallerySection";
 import VideoSection from "@/components/VideoSection";
 import MessageSection from "@/components/MessageSection";
+import GiftSection from "@/components/GiftSection";
 
 const Index = () => {
   return (
@@ -10,6 +11,7 @@ const Index = () => {
       <GallerySection />
       <VideoSection />
       <MessageSection />
+      <GiftSection />
     </main>
   );
 };

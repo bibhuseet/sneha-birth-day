@@ -5,17 +5,11 @@ import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
 
 const galleryItems = [
   { src: gallery1, quote: "Every moment with you is a beautiful memory 🌸" },
   { src: gallery2, quote: "You paint the world in the most beautiful colors 🌅" },
   { src: gallery3, quote: "Life is sweeter because of you 🎂" },
-  { src: gallery4, quote: "Your smile blooms like a field of flowers 💐" },
-  { src: gallery5, quote: "You are the most beautiful chapter of my life 🌹" },
-  { src: gallery6, quote: "You light up every room you walk into ✨" },
 ];
 
 const GallerySection = () => {
