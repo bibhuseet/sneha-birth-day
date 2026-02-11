@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   const [titleText, setTitleText] = useState("");
@@ -58,12 +57,8 @@ const HeroSection = () => {
     <section
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
-      <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
+      {/* Clean pastel background */}
+      <div className="absolute inset-0 bg-background" />
 
       <div className="relative z-10 text-center max-w-2xl mx-auto">
         {/* Title */}
