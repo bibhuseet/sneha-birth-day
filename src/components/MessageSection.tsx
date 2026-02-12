@@ -14,7 +14,7 @@ const MessageSection = () => {
           className="bg-secondary/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-soft border border-border/50 text-center"
         >
           <h2 className="font-cursive text-4xl md:text-5xl text-foreground mb-6">
-            For You, Sneha 💌
+            Special Message for You 💌
           </h2>
 
           <div className="space-y-5 font-body text-foreground/80 leading-relaxed text-base md:text-lg text-center">
@@ -49,7 +49,7 @@ const MessageSection = () => {
               I promise to keep showing up at your doorstep every Sunday,<br />
               saying, "Chale Buli Jiba."
             </p>
-            <p>And before this starts feeling too cheesy to read…</p>
+            <p>And before this starts feeling too cringe to read…</p>
             <p>
               I just want to say —
             </p>
