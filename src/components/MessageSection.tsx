@@ -42,11 +42,7 @@ const MessageSection = () => {
             </p>
             <p>I want to promise you something.</p>
             <p>
-              I promise to stay curious about why you act so tough.<br />
-              I promise that you will never have to earn my presence —<br />
-              you already have it.<br />
-              And<br />
-              I promise to keep showing up at your doorstep every Sunday,<br />
+              I promise to keep showing up at your doorstep out of Nowhere,<br />
               saying, "Chale Buli Jiba."
             </p>
             <p>And before this starts feeling too cringe to read…</p>
@@ -64,7 +60,7 @@ const MessageSection = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-8 font-cursive text-2xl md:text-3xl text-primary"
           >
-            With all my love 💖
+            Always here for you 💖
           </motion.p>
 
           <motion.div
