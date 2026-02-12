@@ -7,9 +7,9 @@ import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 
 const galleryItems = [
-  { src: gallery1, quote: "Every moment with you is a beautiful memory 🌸" },
-  { src: gallery2, quote: "You paint the world in the most beautiful colors 🌅" },
-  { src: gallery3, quote: "Life is sweeter because of you 🎂" },
+  { src: gallery1, quote: "You are worth every smile,\nand you are worth every mile." },
+  { src: gallery2, quote: "You turn a simple chai stall into an Asthetic café." },
+  { src: gallery3, quote: "You are as perfect as this month of February." },
 ];
 
 const GallerySection = () => {
@@ -76,7 +76,7 @@ const GalleryCard = ({ item, index, isVisible }: GalleryCardProps) => {
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       >
-        <p className="text-primary-foreground text-center font-body text-sm md:text-base font-medium leading-relaxed">
+        <p className="text-primary-foreground text-center font-body text-sm md:text-base font-medium leading-relaxed whitespace-pre-line">
           {item.quote}
         </p>
       </div>

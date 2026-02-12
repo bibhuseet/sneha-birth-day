@@ -17,20 +17,44 @@ const MessageSection = () => {
             For You, Sneha 💌
           </h2>
 
-          <div className="space-y-4 font-body text-foreground/80 leading-relaxed text-base md:text-lg">
+          <div className="space-y-5 font-body text-foreground/80 leading-relaxed text-base md:text-lg text-left">
             <p>
-              On this special day, I just want you to know how incredibly grateful I am 
-              to have you in my life. Your kindness, your warmth, and your beautiful smile 
-              make every day brighter.
+              The only thing special about this message<br />
+              is that you are reading it.
+            </p>
+            <p>Anyways…</p>
+            <p>
+              I once heard Sourabh Dwivedi say,<br />
+              <em>"Agar aap kisi aise insaan se mile hain jiski wajah se aapne bahut khushi mehsoos ki hai, toh unhe zaroor bataiyega."</em>
+            </p>
+            <p>So today, I just want to tell you this.</p>
+            <p>
+              Thank you for making me smile.<br />
+              Thank you for making me happy on days when I felt sad, frustrated, or anxious —<br />
+              even on days when you were the reason behind those feelings.
             </p>
             <p>
-              You are more than just a wonderful person — you are a blessing to everyone 
-              who knows you. May this birthday bring you as much joy as you bring to the 
-              people around you.
+              Thank you for being understanding during the harsh moments,<br />
+              when you had every reason to be angry.<br />
+              And even during the simple moments —<br />
+              when you didn't call back<br />
+              or didn't explain why!
             </p>
+            <p>I want to promise you something.</p>
             <p>
-              Here's to another year of beautiful moments, new adventures, and dreams 
-              coming true. Never stop being the amazing person you are.
+              I promise to stay curious about why you act so tough.<br />
+              I promise that you will never have to earn my presence —<br />
+              you already have it.<br />
+              And<br />
+              I promise to keep showing up at your doorstep every Sunday,<br />
+              saying, "Chale Buli Jiba."
+            </p>
+            <p>And before this starts feeling too cheesy to read…</p>
+            <p>
+              I just want to say —
+            </p>
+            <p className="font-cursive text-2xl text-primary">
+              Happy Birthday. ✨
             </p>
           </div>
 

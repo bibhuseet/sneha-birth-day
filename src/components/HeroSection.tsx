@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import heroHands from "@/assets/hero-hands.png";
 
 const HeroSection = () => {
   const [titleText, setTitleText] = useState("");
@@ -7,12 +8,12 @@ const HeroSection = () => {
   const [messageText, setMessageText] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [phase, setPhase] = useState(0);
+  const [showBg, setShowBg] = useState(false);
 
   const title = "Happy Birthday";
   const message = "Wishing you a day filled with love, laughter, and all the happiness your heart can hold. You deserve the world and more!";
 
   useEffect(() => {
-    // Phase 0: type title
     if (phase === 0) {
       let i = 0;
       const interval = setInterval(() => {
@@ -27,13 +28,13 @@ const HeroSection = () => {
       return () => clearInterval(interval);
     }
 
-    // Phase 1: show name
     if (phase === 1) {
       setShowName(true);
+      // Fade in background after Sneha appears
+      setTimeout(() => setShowBg(true), 300);
       setTimeout(() => setPhase(2), 800);
     }
 
-    // Phase 2: type message
     if (phase === 2) {
       let i = 0;
       const interval = setInterval(() => {
@@ -57,12 +58,24 @@ const HeroSection = () => {
     <section
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6"
     >
-      {/* Clean pastel background */}
-      <div className="absolute inset-0 bg-background" />
+      {/* Base background color */}
+      <div className="absolute inset-0 bg-foreground" />
+
+      {/* Background image with fade-in */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showBg ? 1 : 0 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroHands})` }}
+      />
+
+      {/* Dark gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
       <div className="relative z-10 text-center max-w-2xl mx-auto">
         {/* Title */}
-        <h1 className="font-cursive text-5xl md:text-7xl font-bold text-foreground mb-4">
+        <h1 className="font-cursive text-5xl md:text-7xl font-bold text-white mb-4">
           {titleText}
           {phase === 0 && (
             <span className="typewriter-cursor" />
@@ -83,7 +96,7 @@ const HeroSection = () => {
 
         {/* Message */}
         {phase >= 2 && (
-          <p className="text-base md:text-lg text-foreground/80 font-body leading-relaxed max-w-lg mx-auto mb-2">
+          <p className="text-base md:text-lg text-white/80 font-body leading-relaxed max-w-lg mx-auto mb-2">
             {messageText}
             {!showButton && <span className="typewriter-cursor" />}
           </p>
