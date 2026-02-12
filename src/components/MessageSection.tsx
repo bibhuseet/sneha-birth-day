@@ -17,7 +17,7 @@ const MessageSection = () => {
             For You, Sneha 💌
           </h2>
 
-          <div className="space-y-5 font-body text-foreground/80 leading-relaxed text-base md:text-lg text-left">
+          <div className="space-y-5 font-body text-foreground/80 leading-relaxed text-base md:text-lg text-center">
             <p>
               The only thing special about this message<br />
               is that you are reading it.
