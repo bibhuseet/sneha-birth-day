@@ -1,8 +1,8 @@
 import HeroSection from "@/components/HeroSection";
 import GallerySection from "@/components/GallerySection";
-import VideoSection from "@/components/VideoSection";
 import MessageSection from "@/components/MessageSection";
-import GiftSection from "@/components/GiftSection";
+import VideoSection from "@/components/VideoSection";
+import FeedbackSection from "@/components/FeedbackSection";
 import FloatingEmojis from "@/components/FloatingEmojis";
 
 const Index = () => {
@@ -11,9 +11,9 @@ const Index = () => {
       <FloatingEmojis />
       <HeroSection />
       <GallerySection />
-      <VideoSection />
       <MessageSection />
-      <GiftSection />
+      <VideoSection />
+      <FeedbackSection />
     </main>
   );
 };

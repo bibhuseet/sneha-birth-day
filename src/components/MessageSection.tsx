@@ -14,7 +14,7 @@ const MessageSection = () => {
           className="bg-secondary/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-soft border border-border/50 text-center"
         >
           <h2 className="font-cursive text-4xl md:text-5xl text-foreground mb-6">
-            Special Message for You 💌
+            Special Message 💌
           </h2>
 
           <div className="space-y-5 font-body text-foreground/80 leading-relaxed text-base md:text-lg text-center">
@@ -40,10 +40,15 @@ const MessageSection = () => {
               when you didn't call back<br />
               or didn't explain why!
             </p>
-            <p>I want to promise you something.</p>
+            <p>And</p>
             <p>
               I promise to keep showing up at your doorstep out of Nowhere,<br />
               saying, "Chale Buli Jiba."
+            </p>
+            <p>
+              I promise to be always there for you so<br />
+              call me if you need me<br />
+              call me even if you don't
             </p>
             <p>And before this starts feeling too cringe to read…</p>
             <p>
@@ -73,16 +78,6 @@ const MessageSection = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: 0.9 }}
-        className="text-center mt-16 text-muted-foreground font-body text-sm"
-      >
-        <p>Made with 💖 for Sneha</p>
-      </motion.footer>
     </section>
   );
 };

@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
-import heroHands from "@/assets/hero-hands.png";
+import { Volume2, VolumeX } from "lucide-react";
+import heroBg from "@/assets/hero-bg-new.png";
 
 const HeroSection = () => {
   const [titleText, setTitleText] = useState("");
@@ -9,9 +10,11 @@ const HeroSection = () => {
   const [showButton, setShowButton] = useState(false);
   const [phase, setPhase] = useState(0);
   const [showBg, setShowBg] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const title = "Happy Birthday";
-  const message = "Wishing you a day filled with love, laughter, and all the happiness your heart can hold. You deserve the world and more!";
+  const message = "Wishing you a day filled with joy, laughter, and all the happiness your heart can hold. You deserve the world and more!";
 
   useEffect(() => {
     if (phase === 0) {
@@ -30,8 +33,15 @@ const HeroSection = () => {
 
     if (phase === 1) {
       setShowName(true);
-      // Fade in background after Sneha appears
       setTimeout(() => setShowBg(true), 300);
+      // Start music after Sneha appears
+      setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.play().catch(() => {
+            // Autoplay blocked by browser - user needs to interact
+          });
+        }
+      }, 500);
       setTimeout(() => setPhase(2), 800);
     }
 
@@ -50,14 +60,22 @@ const HeroSection = () => {
     }
   }, [phase]);
 
+  const toggleMute = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  }, [isMuted]);
+
   const handleScroll = useCallback(() => {
     document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   return (
-    <section
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6"
-    >
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6">
+      {/* Audio */}
+      <audio ref={audioRef} src="/music.mp3" loop />
+
       {/* Base background color */}
       <div className="absolute inset-0 bg-foreground" />
 
@@ -67,22 +85,32 @@ const HeroSection = () => {
         animate={{ opacity: showBg ? 1 : 0 }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroHands})` }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
 
       {/* Dark gradient overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
+      {/* Mute/Unmute button */}
+      {showName && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          onClick={toggleMute}
+          className="absolute top-6 right-6 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 hover:text-white hover:bg-white/20 transition-all duration-300"
+          aria-label={isMuted ? "Unmute" : "Mute"}
+        >
+          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+        </motion.button>
+      )}
+
       <div className="relative z-10 text-center max-w-2xl mx-auto">
-        {/* Title */}
         <h1 className="font-cursive text-5xl md:text-7xl font-bold text-white mb-4">
           {titleText}
-          {phase === 0 && (
-            <span className="typewriter-cursor" />
-          )}
+          {phase === 0 && <span className="typewriter-cursor" />}
         </h1>
 
-        {/* Name */}
         {showName && (
           <motion.h2
             initial={{ opacity: 0, scale: 0.8 }}
@@ -94,7 +122,6 @@ const HeroSection = () => {
           </motion.h2>
         )}
 
-        {/* Message */}
         {phase >= 2 && (
           <p className="text-base md:text-lg text-white/80 font-body leading-relaxed max-w-lg mx-auto mb-2">
             {messageText}
@@ -102,7 +129,6 @@ const HeroSection = () => {
           </p>
         )}
 
-        {/* Emojis */}
         {showButton && (
           <motion.p
             initial={{ opacity: 0 }}
@@ -114,7 +140,6 @@ const HeroSection = () => {
           </motion.p>
         )}
 
-        {/* Button */}
         {showButton && (
           <motion.button
             initial={{ opacity: 0, y: 20 }}
@@ -129,27 +154,9 @@ const HeroSection = () => {
       </div>
 
       {/* Floating decorations */}
-      <motion.div
-        className="absolute top-20 left-10 text-4xl opacity-30 animate-float"
-        animate={{ y: [-10, 10, -10] }}
-        transition={{ duration: 4, repeat: Infinity }}
-      >
-        🌸
-      </motion.div>
-      <motion.div
-        className="absolute bottom-32 right-10 text-3xl opacity-30"
-        animate={{ y: [10, -10, 10] }}
-        transition={{ duration: 5, repeat: Infinity }}
-      >
-        💖
-      </motion.div>
-      <motion.div
-        className="absolute top-40 right-20 text-2xl opacity-20"
-        animate={{ y: [-8, 8, -8] }}
-        transition={{ duration: 3.5, repeat: Infinity }}
-      >
-        ✨
-      </motion.div>
+      <motion.div className="absolute top-20 left-10 text-4xl opacity-30 animate-float" animate={{ y: [-10, 10, -10] }} transition={{ duration: 4, repeat: Infinity }}>🌸</motion.div>
+      <motion.div className="absolute bottom-32 right-10 text-3xl opacity-30" animate={{ y: [10, -10, 10] }} transition={{ duration: 5, repeat: Infinity }}>💖</motion.div>
+      <motion.div className="absolute top-40 right-20 text-2xl opacity-20" animate={{ y: [-8, 8, -8] }} transition={{ duration: 3.5, repeat: Infinity }}>✨</motion.div>
     </section>
   );
 };
