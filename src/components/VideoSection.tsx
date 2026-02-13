@@ -39,11 +39,12 @@ const VideoSection = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-8"
         >
-          <h2 className="font-cursive text-3xl md:text-4xl text-foreground leading-snug">
+          <h2 className="font-cursive text-4xl md:text-5xl text-foreground mb-3">
             <span className="block">Special Gift</span>
             <span className="block">for the</span>
-            <span className="block">Most Amazing Person ✨💖🌸</span>
+            <span className="block">Most Amazing Person</span>
           </h2>
+          <p className="text-2xl">💖✨🌸</p>
         </motion.div>
 
         <motion.div
