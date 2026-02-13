@@ -1,12 +1,34 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
+import { useAudioPlayer } from "@/contexts/AudioContext";
 
 const VideoSection = () => {
   const { ref, isVisible } = useScrollFadeIn(0.2);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { pauseForVideo, resumeAfterVideo } = useAudioPlayer();
 
-  // Convert Google Drive link to embeddable format
   const driveFileId = "1nAzcB_GGgDUGmAxw1Tz0vgbkVttRTbRU";
   const embedUrl = `https://drive.google.com/file/d/${driveFileId}/preview`;
+
+  // For Google Drive embeds, we can't attach play/pause listeners directly.
+  // Instead, mute music when iframe is in view and user scrolls to it.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          pauseForVideo();
+        } else {
+          resumeAfterVideo();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    const el = iframeRef.current;
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
+  }, [pauseForVideo, resumeAfterVideo]);
 
   return (
     <section className="py-20 px-6" ref={ref}>
@@ -19,6 +41,7 @@ const VideoSection = () => {
         >
           <div className="aspect-[3/4] w-full">
             <iframe
+              ref={iframeRef}
               src={embedUrl}
               className="w-full h-full rounded-2xl"
               allow="autoplay; encrypted-media"
