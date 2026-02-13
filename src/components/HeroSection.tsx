@@ -34,7 +34,7 @@ const HeroSection = () => {
     if (phase === 1) {
       setShowName(true);
       setTimeout(() => setShowBg(true), 300);
-      setTimeout(() => startMusic(), 500);
+      
       setTimeout(() => setPhase(2), 800);
     }
 
@@ -54,8 +54,9 @@ const HeroSection = () => {
   }, [phase]);
 
   const handleScroll = useCallback(() => {
+    startMusic();
     document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  }, [startMusic]);
 
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6">
