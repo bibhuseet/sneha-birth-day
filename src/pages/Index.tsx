@@ -61,7 +61,7 @@ const SiteContent = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           onClick={toggleMute}
-          className="fixed top-5 right-5 z-40 p-3 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-foreground/70 hover:text-foreground hover:bg-card shadow-soft transition-all duration-300"
+          className="fixed bottom-5 right-5 z-40 p-3 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-foreground/70 hover:text-foreground hover:bg-card shadow-soft transition-all duration-300"
           aria-label={isMuted ? "Unmute" : "Mute"}
         >
           {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
