@@ -34,11 +34,11 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
   const startMusic = useCallback(() => {
     if (audioRef.current) {
+      audioRef.current.volume = 0.3;
       audioRef.current.muted = false;
       audioRef.current.play().then(() => {
         setIsMuted(false);
       }).catch(() => {
-        // Browser still blocked unmuted playback — try muted
         if (audioRef.current) {
           audioRef.current.muted = true;
           audioRef.current.play().then(() => {
