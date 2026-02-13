@@ -54,7 +54,7 @@ const SiteContent = () => {
       </AnimatePresence>
       <main className="relative bg-background overflow-x-hidden">
         <FloatingEmojis />
-        <HeroSection />
+        <HeroSection started={entered} />
         <GallerySection />
         <MessageSection />
         <VideoSection />

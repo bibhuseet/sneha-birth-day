@@ -4,17 +4,21 @@ import { Volume2, VolumeX } from "lucide-react";
 import { useAudioPlayer } from "@/contexts/AudioContext";
 import heroBg from "@/assets/hero-bg-new.png";
 
-const HeroSection = () => {
+const HeroSection = ({ started }: { started: boolean }) => {
   const [titleText, setTitleText] = useState("");
   const [showName, setShowName] = useState(false);
   const [messageText, setMessageText] = useState("");
   const [showButton, setShowButton] = useState(false);
-  const [phase, setPhase] = useState(0);
+  const [phase, setPhase] = useState(-1);
   const [showBg, setShowBg] = useState(false);
   const { isMuted, toggleMute, startMusic } = useAudioPlayer();
 
   const title = "Happy Birthday";
   const message = "Wishing you a day filled with joy, laughter, and all the happiness your heart can hold. You deserve the world and more!";
+
+  useEffect(() => {
+    if (started && phase === -1) setPhase(0);
+  }, [started]);
 
   useEffect(() => {
     if (phase === 0) {
