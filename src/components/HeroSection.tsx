@@ -76,18 +76,7 @@ const HeroSection = ({ started }: { started: boolean }) => {
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
-      {showName && (
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          onClick={toggleMute}
-          className="absolute top-6 right-6 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 hover:text-white hover:bg-white/20 transition-all duration-300"
-          aria-label={isMuted ? "Unmute" : "Mute"}
-        >
-          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-        </motion.button>
-      )}
+      {/* Mute button moved to fixed global position */}
 
       <div className="relative z-10 text-center max-w-2xl mx-auto">
         <h1 className="font-cursive text-5xl md:text-7xl font-bold text-white mb-4">

@@ -31,13 +31,13 @@ const VideoSection = () => {
   }, [pauseForVideo, resumeAfterVideo]);
 
   return (
-    <section className="py-20 px-6" ref={ref}>
+    <section className="py-20 px-6 bg-gradient-to-b from-secondary/40 via-muted/30 to-secondary/40" ref={ref}>
       <div className="max-w-md mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="rounded-2xl overflow-hidden shadow-soft bg-card"
+          className="rounded-2xl overflow-hidden shadow-soft bg-card border border-border/30"
         >
           <div className="aspect-[3/4] w-full">
             <iframe

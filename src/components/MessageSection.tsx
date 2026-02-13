@@ -59,15 +59,6 @@ const MessageSection = () => {
             </p>
           </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-8 font-cursive text-2xl md:text-3xl text-primary"
-          >
-            Always here for you 💖
-          </motion.p>
-
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isVisible ? { opacity: 1, scale: 1 } : {}}
