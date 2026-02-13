@@ -4,44 +4,27 @@ import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 const VideoSection = () => {
   const { ref, isVisible } = useScrollFadeIn(0.2);
 
+  // Convert Google Drive link to embeddable format
+  const driveFileId = "1nAzcB_GGgDUGmAxw1Tz0vgbkVttRTbRU";
+  const embedUrl = `https://drive.google.com/file/d/${driveFileId}/preview`;
+
   return (
     <section className="py-20 px-6" ref={ref}>
-      <div className="max-w-3xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="font-cursive text-4xl md:text-5xl text-center text-foreground mb-4"
-        >
-          A Special Moment
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center text-muted-foreground mb-10 font-body"
-        >
-          Press play for a surprise 🎬
-        </motion.p>
-
+      <div className="max-w-md mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
           className="rounded-2xl overflow-hidden shadow-soft bg-card"
         >
-          <video
-            controls
-            className="w-full aspect-video bg-muted rounded-2xl"
-            poster=""
-          >
-            <source src="" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="p-4 text-center">
-            <p className="text-muted-foreground text-sm font-body italic">
-              Replace this with your special video 🎥
-            </p>
+          <div className="aspect-[3/4] w-full">
+            <iframe
+              src={embedUrl}
+              className="w-full h-full rounded-2xl"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              title="Special video"
+            />
           </div>
         </motion.div>
       </div>

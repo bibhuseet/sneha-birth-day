@@ -2,12 +2,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 
-import gallery1 from "@/assets/gallery-1.jpg";
+import gallery1 from "@/assets/gallery-1-new.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 
 const galleryItems = [
-  { src: gallery1, quote: "You are worth every smile,\nand you are worth every mile." },
+  { src: gallery1, quote: "smiles and miles" },
   { src: gallery2, quote: "You turn a simple chai stall into an Asthetic café." },
   { src: gallery3, quote: "You are as perfect as this month of February." },
 ];
