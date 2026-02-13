@@ -7,7 +7,7 @@ import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 
 const galleryItems = [
-  { src: gallery1, quote: "smiles and miles" },
+  { src: gallery1, quote: "You are worth every smiles,\nand you are worth every miles." },
   { src: gallery2, quote: "You turn a simple chai stall into an Asthetic café." },
   { src: gallery3, quote: "You are as perfect as this month of February." },
 ];

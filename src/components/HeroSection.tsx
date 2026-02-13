@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
+import { useAudioPlayer } from "@/contexts/AudioContext";
 import heroBg from "@/assets/hero-bg-new.png";
 
 const HeroSection = () => {
@@ -10,8 +11,7 @@ const HeroSection = () => {
   const [showButton, setShowButton] = useState(false);
   const [phase, setPhase] = useState(0);
   const [showBg, setShowBg] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const { isMuted, toggleMute, startMusic } = useAudioPlayer();
 
   const title = "Happy Birthday";
   const message = "Wishing you a day filled with joy, laughter, and all the happiness your heart can hold. You deserve the world and more!";
@@ -34,14 +34,7 @@ const HeroSection = () => {
     if (phase === 1) {
       setShowName(true);
       setTimeout(() => setShowBg(true), 300);
-      // Start music after Sneha appears
-      setTimeout(() => {
-        if (audioRef.current) {
-          audioRef.current.play().catch(() => {
-            // Autoplay blocked by browser - user needs to interact
-          });
-        }
-      }, 500);
+      setTimeout(() => startMusic(), 500);
       setTimeout(() => setPhase(2), 800);
     }
 
@@ -60,26 +53,14 @@ const HeroSection = () => {
     }
   }, [phase]);
 
-  const toggleMute = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.muted = !audioRef.current.muted;
-      setIsMuted(!isMuted);
-    }
-  }, [isMuted]);
-
   const handleScroll = useCallback(() => {
     document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6">
-      {/* Audio */}
-      <audio ref={audioRef} src="/music.mp3" loop />
-
-      {/* Base background color */}
       <div className="absolute inset-0 bg-foreground" />
 
-      {/* Background image with fade-in */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: showBg ? 1 : 0 }}
@@ -88,10 +69,8 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
-      {/* Dark gradient overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
-      {/* Mute/Unmute button */}
       {showName && (
         <motion.button
           initial={{ opacity: 0 }}
@@ -130,12 +109,7 @@ const HeroSection = () => {
         )}
 
         {showButton && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl md:text-3xl mb-10"
-          >
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="text-2xl md:text-3xl mb-10">
             ✨🎂💖🌸
           </motion.p>
         )}
@@ -153,7 +127,6 @@ const HeroSection = () => {
         )}
       </div>
 
-      {/* Floating decorations */}
       <motion.div className="absolute top-20 left-10 text-4xl opacity-30 animate-float" animate={{ y: [-10, 10, -10] }} transition={{ duration: 4, repeat: Infinity }}>🌸</motion.div>
       <motion.div className="absolute bottom-32 right-10 text-3xl opacity-30" animate={{ y: [10, -10, 10] }} transition={{ duration: 5, repeat: Infinity }}>💖</motion.div>
       <motion.div className="absolute top-40 right-20 text-2xl opacity-20" animate={{ y: [-8, 8, -8] }} transition={{ duration: 3.5, repeat: Infinity }}>✨</motion.div>
