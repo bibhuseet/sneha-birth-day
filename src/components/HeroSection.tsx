@@ -7,7 +7,7 @@ import heroBg from "@/assets/hero-bg-new.png";
 const HeroSection = ({ started }: { started: boolean }) => {
   const [titleText, setTitleText] = useState("");
   const [showName, setShowName] = useState(false);
-  const [messageText, setMessageText] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [phase, setPhase] = useState(-1);
   const [showBg, setShowBg] = useState(false);
@@ -43,17 +43,9 @@ const HeroSection = ({ started }: { started: boolean }) => {
     }
 
     if (phase === 2) {
-      let i = 0;
-      const interval = setInterval(() => {
-        if (i < message.length) {
-          setMessageText(message.slice(0, i + 1));
-          i++;
-        } else {
-          clearInterval(interval);
-          setTimeout(() => setShowButton(true), 500);
-        }
-      }, 30);
-      return () => clearInterval(interval);
+      setShowMessage(true);
+      const timer = setTimeout(() => setShowButton(true), 1200);
+      return () => clearTimeout(timer);
     }
   }, [phase]);
 
@@ -95,11 +87,15 @@ const HeroSection = ({ started }: { started: boolean }) => {
           </motion.h2>
         )}
 
-        {phase >= 2 && (
-          <p className="text-base md:text-lg text-white/80 font-body leading-relaxed max-w-lg mx-auto mb-2">
-            {messageText}
-            {!showButton && <span className="typewriter-cursor" />}
-          </p>
+        {showMessage && (
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-base md:text-lg text-white/80 font-body leading-relaxed max-w-lg mx-auto mb-2"
+          >
+            {message}
+          </motion.p>
         )}
 
         {showButton && (

@@ -34,6 +34,19 @@ const VideoSection = () => {
     <section className="py-20 px-6 bg-gradient-to-b from-secondary/40 via-muted/30 to-secondary/40" ref={ref}>
       <div className="max-w-md mx-auto">
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-8"
+        >
+          <h2 className="font-cursive text-3xl md:text-4xl text-foreground leading-snug">
+            <span className="block">Special Gift</span>
+            <span className="block">for the</span>
+            <span className="block">Most Amazing Person ✨💖🌸</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -50,6 +63,15 @@ const VideoSection = () => {
             />
           </div>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center text-sm text-muted-foreground font-body mt-5"
+        >
+          Hope you like it!
+        </motion.p>
       </div>
     </section>
   );
