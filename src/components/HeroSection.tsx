@@ -99,16 +99,21 @@ const HeroSection = ({ started }: { started: boolean }) => {
         )}
 
         {showButton && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="text-2xl md:text-3xl mb-10">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-2xl md:text-3xl mb-10"
+          >
             ✨🎂💖🌸
           </motion.p>
         )}
 
         {showButton && (
           <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             onClick={handleScroll}
             className="gradient-romantic text-primary-foreground font-body font-semibold text-lg px-10 py-4 rounded-full shadow-glow animate-glow-pulse transition-transform duration-300 hover:scale-105"
           >

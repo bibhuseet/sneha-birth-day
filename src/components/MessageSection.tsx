@@ -13,9 +13,10 @@ const MessageSection = () => {
           transition={{ duration: 0.8 }}
           className="bg-secondary/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-soft border border-border/50 text-center"
         >
-          <h2 className="font-cursive text-4xl md:text-5xl text-foreground mb-6">
-            Special Message 💌
+          <h2 className="font-cursive text-4xl md:text-5xl text-foreground mb-3">
+            Special Message
           </h2>
+          <p className="text-2xl mb-6">💌</p>
 
           <div className="space-y-5 font-body text-foreground/80 leading-relaxed text-base md:text-lg text-center">
             <p>
