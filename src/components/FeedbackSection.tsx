@@ -9,7 +9,8 @@ const FeedbackSection = () => {
 
   const handleSend = () => {
     if (!message.trim()) return;
-    const encoded = encodeURIComponent(message.trim());
+    const formatted = `My Feedback for the Wish:\n\n${message.trim()}\n\n----------------`;
+    const encoded = encodeURIComponent(formatted);
     window.open(`https://wa.me/917328864849?text=${encoded}`, "_blank");
     setMessage("");
     setShowInput(false);
