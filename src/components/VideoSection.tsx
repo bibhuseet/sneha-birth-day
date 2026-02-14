@@ -71,7 +71,7 @@ const VideoSection = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center text-sm text-muted-foreground font-body mt-5"
         >
-          Hope you like it!
+          Hope it's better than the college blackboard scene!
         </motion.p>
       </div>
     </section>
